@@ -1,0 +1,6 @@
+console.ConsolePlugin.compile(view,buffer);
+waitForConsole(view);
+wm.showDockableWindow("icepdf-viewer");
+viewer = wm.getDockableWindow("icepdf-viewer");
+viewer.openPdf(buffer);
+
