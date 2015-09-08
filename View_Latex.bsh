@@ -1,4 +1,4 @@
-console.ConsolePlugin.compile(view,buffer);
+runCommandInConsole(view, "System", "pdflatex " + buffer.getPath());
 waitForConsole(view);
 wm.showDockableWindow("icepdf-viewer");
 viewer = wm.getDockableWindow("icepdf-viewer");
