@@ -1,0 +1,23 @@
+import java.util.regex.*;
+
+textArea.goToBufferStart(false);
+
+linkRegex = "(\\[\\[(\\d+)\\]\\]) \\d+:";
+linkPattern = Pattern.compile(linkRegex);
+
+int messageNumber = 1;
+
+for (lineNumber = 0; lineNumber < buffer.getLineCount(); lineNumber++) {
+  line = buffer.getLineText(lineNumber);
+  matcher = linkPattern.matcher(line);
+  if ( matcher.find() ) {
+    part = matcher.group(1);
+    newLine = line.replaceFirst(linkRegex, part + " " + messageNumber + ":");        
+    offset = buffer.getLineStartOffset(lineNumber);
+    textArea.setCaretPosition(offset);
+    textArea.selectLine();
+    textArea.setSelectedText(newLine);    
+    messageNumber++;
+  }
+}
+
